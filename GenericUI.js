@@ -22,4 +22,11 @@ class GenericUI {
     const html = `<div>${form}</div>`;
     return html
   }
+  static extractFunctionParameters(funC){
+    const codeStr = funC.toString();
+    const open = codeStr.indexOf("(");
+    const close = codestr.indexOf(")");
+    const params = codeStr.slice(open, close);
+    return params;
+  }
 }
