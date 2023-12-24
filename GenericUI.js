@@ -24,9 +24,9 @@ class GenericUI {
   }
   static extractFunctionParameters(funC){
     const codeStr = funC.toString();
-    const open = codeStr.indexOf("(");
+    const open = codeStr.indexOf("(") + 1;
     const close = codeStr.indexOf(")");
-    const params = codeStr.slice(open, close);
+    const params = codeStr.slice(open, close).split(",");
     return params;
   }
 }
