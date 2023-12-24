@@ -11,8 +11,8 @@ class GenericUI {
   }
   static extract(funC){
     const buttonName = funC.name;
-    const inputs = [];
     let form = `<form method="">`;
+    const params = GenericUI.extractFunctionParameters(funC);
     params.map(param => {
       form += `<input type="text" name="${param}" placeholder="${param}">`;
     });
@@ -21,5 +21,12 @@ class GenericUI {
     form += "</form>"
     const html = `<div>${form}</div>`;
     return html
+  }
+  static extractFunctionParameters(funC){
+    const codeStr = funC.toString();
+    const open = codeStr.indexOf("(") + 1;
+    const close = codeStr.indexOf(")");
+    const params = codeStr.slice(open, close).split(",");
+    return params;
   }
 }
